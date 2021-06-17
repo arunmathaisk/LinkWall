@@ -42,21 +42,24 @@ def logout():
 
 @app.route('/admin', methods=["GET", "POST"])
 def link():
-    if(request.method == "POST"):
-        linkpost = request.form["linkpost"]
-        if(len(str(linkpost)) != 0):
-            new_linkpost = Link(linkurl=linkpost)
-            try:
-                db.session.add(new_linkpost)
-                db.session.commit()
+    if(session.get("isAdmin")=="YES"):
+        if(request.method == "POST"):
+            linkpost = request.form["linkpost"]
+            if(len(str(linkpost)) != 0):
+                new_linkpost = Link(linkurl=linkpost)
+                try:
+                    db.session.add(new_linkpost)
+                    db.session.commit()
+                    return redirect('/admin')
+                except:
+                    return 'There was an issue adding the link'
+            else:
                 return redirect('/admin')
-            except:
-                return 'There was an issue adding the link'
         else:
-            return redirect('/admin')
+            links = Link.query.order_by(Link.id).all()
+            return render_template("admin.html", links=links)
     else:
-        links = Link.query.order_by(Link.id).all()
-        return render_template("admin.html", links=links)
+        return "You are not logged in :)"
 
 
 @app.route('/delete/<int:id>')
