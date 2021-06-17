@@ -3,13 +3,14 @@
 A useful flask application to manage your links. 
 <br>
 Basically a link wall(I know it's a rip off on the bookmark concept)
-Home Screen
+<br>
+<h3>Home Screen </h3>
 ![Screenshot](linkwall_demo_images/home_screen.png)
-Login Page
+ <h3>Login Page </h3>
 ![Screenshot](linkwall_demo_images/login.png)
-Add a new link
+ <h3>Add a new link </h3>
 ![Screenshot](linkwall_demo_images/new_link.png)
-Group By Tag
+ <h3>Group By Tag </h3>
 ![Screenshot](linkwall_demo_images/tag_grouping.png)
 
 
