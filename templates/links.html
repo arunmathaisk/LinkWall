@@ -26,17 +26,23 @@
             </div>
         </div>
     </nav>
+    <br>
+    <h3>Tags</h3>
     {% block body %}
     <div class="content">
         <br>
+        {% for tag in unique_tags %}
+        <button type="button" onclick="window.location.href='/tag/{{ tag }}';">{{ tag }}</button>         
+            {% endfor %}
+        <br><br><h3>Links</h3> <br>
         <ul>
             {% for link in links %}
             <li>
-                <a href="{{ link.linkurl }}"">{{ link.linkurl }}</a>
+                <a href=" {{ link.linkurl }}"">{{ link.linkurl }}</a>
             </li>
             {% endfor %}
-        </ul>
-        
+            </ul>
+
     </div>
     {% endblock %}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
